@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UsuarioService {
-  URL = 'http://localhost:5000/api/usuarios';
+  URL = 'https://backend-nodejsv1-1.onrender.com/api/usuarios';
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
