@@ -6,10 +6,11 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Fuente moderna */
     color: #333;
+    background-color: #f5f9ff; /* Azul muy claro */
     line-height: 1.6;
-    background-color: #f4f4f4; /* Fondo suave para resaltar los elementos */
+    font-size: 16px;
 }
 
 /* Estilos para la tabla */
@@ -17,85 +18,96 @@ table {
     width: 90%;
     margin: 2rem auto;
     border-collapse: collapse;
-    border-radius: 10px;
+    border-radius: 12px; /* Bordes más redondeados */
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.3s ease;
-    background-color: #1c1c1c; /* Fondo negro */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
 }
 
 table:hover {
-    transform: scale(1.03); /* Efecto de aumento al pasar el ratón */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Efecto sutil al pasar el mouse */
 }
 
 th, td {
     padding: 1.2rem;
     text-align: center;
-    border-bottom: 1px solid #333; /* Borde oscuro para contraste */
+    border-bottom: 1px solid #d0e0ff;
 }
 
 th {
-    background-color: #c70039; /* Rojo oscuro para el encabezado */
-    color: #ffffff; 
-    font-weight: 600;
-    font-size: 1.1rem;
+    background-color: #2962ff; /* Azul intenso */
+    color: #fff;
     text-transform: uppercase;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 tr:nth-child(even) {
-    background-color: #222831; /* Gris oscuro para filas pares */
+    background-color: #e3eeff; /* Azul muy claro */
+}
+
+tr:nth-child(odd) {
+    background-color: #f5f9ff; /* Alternar con un color más claro */
 }
 
 tr:hover {
-    background-color: #1b1b2f; /* Azul oscuro suave al pasar el ratón */
-    transition: background-color 0.3s;
-}
-
-td {
-    color: #eeeeee; /* Color claro para visibilidad */
+    background-color: #c8dcff; /* Azul claro al pasar el mouse */
+    transition: background-color 0.2s ease-in-out;
 }
 
 /* Estilos para el formulario */
 form {
+    width: 90%;
+    max-width: 420px;
     margin: 2rem auto;
-    max-width: 450px;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #1c1c1c; /* Fondo negro */
-    color: #ffffff;
+    padding: 1.8rem;
+    background-color: #ffffff;
+    border-radius: 12px; /* Bordes más suaves */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+form:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Efecto al pasar el mouse */
 }
 
 input, button, select {
     width: 100%;
     padding: 0.8rem;
-    margin: 0.6rem 0;
-    border: 1px solid #333;
+    margin: 0.5rem 0;
+    border: 1px solid #7ba1ff;
     border-radius: 6px;
     font-size: 1rem;
-    transition: all 0.3s ease;
-    background-color: #222831; /* Fondo gris oscuro */
-    color: #ffffff;
+    background-color: #f5f9ff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
 }
 
 input:focus, select:focus {
-    border-color: #c70039; /* Rojo oscuro al enfocar */
+    border-color: #2962ff;
+    background-color: #ffffff;
     outline: none;
 }
 
 button {
-    background-color: #c70039; /* Botón rojo oscuro */
+    background-color: #2962ff;
     color: white;
     border: none;
     cursor: pointer;
     padding: 0.8rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
     border-radius: 6px;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background-color: #ff5733; /* Rojo más claro al pasar el ratón */
+    background-color: #0039cb; /* Azul más oscuro */
+    transform: translateY(-2px); /* Efecto de elevación */
+}
+
+button:active {
+    transform: translateY(0); /* Efecto al presionar */
 }
 
 /* Media Queries para adaptabilidad */
@@ -105,12 +117,12 @@ button:hover {
     }
 
     form {
-        padding: 1rem;
+        padding: 1.2rem;
     }
 
     input, button, select {
         font-size: 0.9rem;
-        padding: 0.6rem;
+        padding: 0.7rem;
     }
 }
 
@@ -118,25 +130,28 @@ button:hover {
 img {
     width: 160px;
     height: auto;
-    border-radius: 4px;
-    transition: transform 0.3s ease;
-    border: 2px solid #c70039; /* Borde rojo para destacar */
+    border-radius: 8px; /* Bordes más redondeados */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid #2962ff;
 }
 
 img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil al hacer hover */
 }
 
 /* Estilos para el contenedor */
 div.centered-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 90%;
-    padding: 2rem;
-    background-color: #1b1b2f; /* Fondo azul oscuro */
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    color: #ffffff;
+    width: 90%;
+    max-width: 550px;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    background-color: #ffffff;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+div.centered-container:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15); /* Efecto al pasar el mouse */
 }

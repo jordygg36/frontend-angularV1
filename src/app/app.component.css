@@ -1,92 +1,134 @@
-/* Estilos para la barra de navegación */
+/* Barra de navegación con gradiente mejorado */
 nav {
-    background: linear-gradient(to right, #ff0000, #0056b3); /* Gradiente de rojo a azul */
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+    background: linear-gradient(90deg, #003a80, #0056b3, #0073e6); /* Gradiente de azul profundo */
+    padding: 1rem 4rem; /* Aumentar el padding para darle más espacio a la barra */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     position: relative;
     z-index: 10;
+    border-radius: 0 0 12px 12px; /* Bordes redondeados abajo */
+    font-family: 'Poppins', sans-serif; /* Aplicar la fuente Poppins */
+    width: 100%; /* Asegurar que ocupe todo el ancho de la pantalla */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }
 
+/* Estilos de la lista de navegación */
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: space-between; /* Alinea los enlaces con más espacio entre ellos */
+    align-items: center;
     margin: 0;
     padding: 0;
-    gap: 1rem; /* Espaciado uniforme entre elementos */
+    gap: 2rem; /* Mayor separación entre los enlaces */
+    width: 100%; /* Asegura que los elementos ocupen el 100% de la barra */
 }
 
+/* Estilos para los elementos de la lista */
 nav li {
     margin: 0;
 }
 
+/* Enlaces de navegación */
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.2rem; /* Tamaño de fuente un poco mayor */
-    padding: 0.6rem 1.2rem;
-    border-radius: 5px;
+    font-size: 1.4rem;
+    padding: 0.8rem 2rem; /* Más espacio en el padding para hacer los enlaces más grandes */
+    border-radius: 6px;
+    font-weight: 500;
     position: relative;
-    transition: color 0.3s, transform 0.2s ease; /* Transición para suavizar el hover */
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif; /* Aplicar la fuente Poppins */
 }
 
 /* Efecto hover con subrayado dinámico */
 nav a::after {
     content: "";
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     left: 50%;
     width: 0;
-    height: 2px;
+    height: 3px;
     background-color: white;
-    transition: width 0.3s, left 0.3s;
+    transition: width 0.4s ease, left 0.4s ease;
+    border-radius: 5px;
 }
 
-/* Expande el subrayado dinámico */
+/* Expande el subrayado y cambia color en hover */
 nav a:hover::after {
     width: 100%;
     left: 0;
 }
 
 nav a:hover {
-    color: #ffebcd; /* Cambia el color del texto en hover */
-    transform: scale(1.05); /* Agranda ligeramente el enlace */
+    color: #ffcc80; /* Amarillo suave en hover */
+    transform: translateY(-2px); /* Efecto de elevación */
 }
 
 /* Estilos para el enlace activo */
 nav a.active {
-    background-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.25);
+    border: 2px solid white;
     font-weight: bold;
-    border: 1px solid #ffffff;
-}
-/* Fondo de página gris elegante */
-body {
-    background-color: #e6e6e6; /* Fondo gris claro */
-    font-family: 'Helvetica Neue', sans-serif; /* Fuente moderna y elegante */
-    color: #333333; /* Color de texto gris oscuro */
-    margin: 0;
-    padding: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-/* Fondo con degradado gris y sutil textura */
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, #ffffff25, #ffffff25); /* Degradado suave en gris */
-    opacity: 0.9;
-    z-index: -1;
+/* Barra de navegación responsiva */
+@media (max-width: 768px) {
+    nav ul {
+        flex-direction: column;
+        gap: 1.5rem;
+        width: 100%; /* Asegura que la lista ocupe todo el ancho */
+    }
+
+    nav {
+        padding: 1rem;
+        text-align: center;
+    }
+
+    button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.2rem;
+        background-color: #2962ff;
+        border: none;
+        border-radius: 6px;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 1rem;
+        font-family: 'Poppins', sans-serif; /* Aplicar la fuente Poppins */
+    }
+
+    button:hover {
+        background-color: #0039cb;
+    }
 }
 
-/* Sombra sutil para el contenedor */
+/* Estilos para el contenedor de la barra de navegación */
 .container {
-    
-    margin: 1rem auto;
-    padding: 1rem;
-    background-color: #ffffff25; /* Fondo blanco para destacar contenido */
-    border-radius: 10px; /* Bordes suaves */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+/* Estilos para el botón de cerrar sesión */
+button {
+    padding: 10px 20px;
+    background-color: #ff4081;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #f50057; /* Color más oscuro en hover */
 }

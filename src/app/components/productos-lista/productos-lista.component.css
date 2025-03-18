@@ -1,0 +1,153 @@
+/* Aplicar la fuente Poppins globalmente */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f4f7fc; /* Fondo claro */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Texto oscuro */
+}
+
+/* Contenedor de las tarjetas */
+.productos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    justify-items: center;
+}
+
+/* Estilo de la tarjeta con bordes redondeados y fondo claro */
+.product-card {
+    background-color: #ffffff; /* Fondo blanco para las tarjetas */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    max-width: 350px;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* Efecto al pasar el ratón */
+}
+
+/* Imagen del producto */
+.card-header {
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 4px solid #f1f1f1; /* Separación elegante entre la imagen y el contenido */
+}
+
+/* Cuerpo de la tarjeta */
+.card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+    color: #555; /* Texto gris para el cuerpo */
+}
+
+.product-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #2a2a2a; /* Título oscuro para contraste */
+    margin-bottom: 10px;
+    line-height: 1.3;
+}
+
+.product-description {
+    font-size: 1rem;
+    color: #777; /* Gris suave para la descripción */
+    margin-bottom: 15px;
+    height: 60px;
+    line-height: 1.5;
+    overflow: hidden;
+}
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    font-size: 1.1rem;
+}
+
+/* Precio */
+.product-price {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #5e72e4; /* Azul vibrante para el precio */
+}
+
+/* Fecha de creación */
+.product-date {
+    font-size: 0.95rem;
+    color: #999; /* Gris suave para la fecha */
+}
+
+/* Acciones al final de la tarjeta */
+.card-actions {
+    padding: 15px;
+    background-color: #f7f8fc; /* Fondo muy suave para la sección de acciones */
+    border-top: 1px solid #f1f1f1; /* Separador suave */
+    text-align: center;
+}
+
+.buy-button {
+    padding: 12px 20px;
+    background-color: #FF6F61; /* Coral */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.buy-button:hover {
+    background-color: #eb4a38; /* Coral más oscuro al pasar el ratón */
+}
+
+.buy-button:disabled {
+    background-color: #f1c0b2; /* Coral claro al estar deshabilitado */
+    cursor: not-allowed;
+}
+
+
+/* Mensaje de autenticación */
+.auth-message {
+    color: #f63325;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .productos-container {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    .buy-button {
+        width: auto;
+    }
+}

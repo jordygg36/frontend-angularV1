@@ -1,30 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
-<div>
-    <table>
-        <thead>
-            <tr>
-                <th>ID Usuario</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Dirección</th>
-                <th>Email</th>
-                <th>Contraseña</th>
-                <th>Acciones</th> 
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of arrayUser">
-                <td>{{item.id_usuario}}</td>
-                <td>{{item.nombre}}</td>
-                <td>{{item.apellido}}</td>
-                <td>{{item.direccion}}</td>
-                <td>{{item.email}}</td>
-                <td>{{item.contrasena}}</td>
-                <td>
-                    <button (click)="editUser(item.id_usuario)">Editar</button> <!-- Botón de editar -->
-                    <button (click)="deleteUser(item.id_usuario)">Eliminar</button> <!-- Botón de eliminar -->
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+</head>
+<body>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Usuario</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Dirección</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Imagen</th>
+                    <th>Acciones</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of arrayUser">
+                    <td>{{item.idusuarios}}</td>
+                    <td>{{item.nombre}}</td>
+                    <td>{{item.apellido}}</td>
+                    <td>{{item.direccion}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.rfc}}</td>
+                    <td><img [src]="'http://localhost:5000/uploads/' + item.imagen" alt="Foto de perfil"></td>
+
+                    <td>
+                        <button (click)="editUser(item.idusuarios)">Editar</button>
+                        <button (click)="deleteUser(item.idusuarios)">Eliminar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <button (click)="addUser()">Añadir Usuario</button>
+    </div>
+</body>
+</html>
+

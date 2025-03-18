@@ -1,13 +1,26 @@
-<div class ="container">
+<div class="container" *ngIf="isAuthenticated">
   <nav>
-    <ul>
-      <li><a href="/inicio">Inicio</a></li>
-      <li><a href="/usuario">Usuario</a></li>
-      <li><a href="/organismo">Organismo</a></li>
-      <li><a href="/agregar-usuario">Agregar Usuario</a></li>
-      <li><a href="/agregar-organismo">Agregar Organismo</a></li>
-    </ul>
+    <a *ngIf="userRole === 1" routerLink="/usuario">Usuarios</a>
+    <a *ngIf="userRole === 2" routerLink="/dashboard">Vendedor</a>
+    <a *ngIf="userRole === 2" routerLink="/carrito-moderador">Lista de Ventas</a>
+    <a *ngIf="userRole === 3" routerLink="/carrito-compras">Carrito</a>
+    <a *ngIf="userRole === 3" routerLink="/productos">Productos</a>
+    <a *ngIf="userId" [routerLink]="['/perfil', userId]">Editar Perfil</a>
+
+
+    <button (click)="logout()">Cerrar sesión</button>
+
   </nav>
+
 </div>
 
-<router-outlet />
+<div *ngIf="!isAuthenticated">
+  <nav>
+    
+    
+    <a routerLink="/productos">Productos</a>
+    <a routerLink="/login">Login</a>
+  </nav>
+  
+</div>
+<router-outlet></router-outlet>

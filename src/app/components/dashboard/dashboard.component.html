@@ -1,0 +1,39 @@
+<div class="dashboard-container" *ngIf="!isTokenExpired; else expiredTemplate">
+  <h1>Bienvenido, <span class="username">Usuario No. {{ userId }}</span></h1>
+  <p class="subtitle">Estás autenticado y puedes acceder a esta página.</p>
+
+  <!-- Resumen de actividad -->
+  <div class="dashboard-summary">
+    <div class="summary-card">
+      <h3>Última compra</h3>
+      <p>Pastel de Chocolate</p>
+    </div>
+    <div class="summary-card">
+      <h3>Órdenes activas</h3>
+      <p>2</p>
+    </div>
+    <div class="summary-card">
+      <h3>Mensajes nuevos</h3>
+      <p>5</p>
+    </div>
+  </div>
+
+  <!-- Atajos a secciones importantes -->
+  <div class="dashboard-links">
+    <a routerLink="/productos" class="shortcut">🛒 Ver Productos</a>
+    <a routerLink="/carrito" class="shortcut">🛍️ Ir al Carrito</a>
+    <a routerLink="/perfil" class="shortcut">👤 Mi Perfil</a>
+  </div>
+
+  <!-- Botón de Cerrar Sesión -->
+  <button class="logout-btn" (click)="logout()">Cerrar sesión</button>
+</div>
+
+<!-- Pantalla cuando el token ha expirado -->
+<ng-template #expiredTemplate>
+  <div class="expired-container">
+    <h1>El token ha expirado</h1>
+    <p>Por favor, vuelve a iniciar sesión.</p>
+    <a routerLink="/login" class="login-btn">Iniciar sesión</a>
+  </div>
+</ng-template>

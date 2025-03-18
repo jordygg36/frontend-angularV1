@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { CommonModule } from '@angular/common';
-
-import { Router } from '@angular/router'; // Asegúrate de importar Router
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -11,7 +9,6 @@ import { Router } from '@angular/router'; // Asegúrate de importar Router
   imports: [CommonModule],
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
-
 })
 export class UsersComponent implements OnInit {
   arrayUser: any = [];
@@ -27,18 +24,18 @@ export class UsersComponent implements OnInit {
       this.arrayUser = result;
     });
   }
-  
+
   addUser() {
-    this.router.navigate(['/agregar-usuario']); // Navegar a la ruta de agregar usuario
+    this.router.navigate(['/add-user']);
   }
 
-  editUser(id_usuario: string) {
-    this.router.navigate(['/editar-usuario', id_usuario]); // Navegar a la ruta de editar usuario
+  editUser(idusuarios: string) {
+    this.router.navigate(['/edit-user', idusuarios]);
   }
-  
-  deleteUser(id_usuario: string) {
-    this.usuarioService.deleteUser(id_usuario).subscribe(() => {
-      this.arrayUser = this.arrayUser.filter((user: any) => user.id_usuario !== id_usuario);
+
+  deleteUser(idusuarios: string) {
+    this.usuarioService.deleteUser(idusuarios).subscribe(() => {
+      this.arrayUser = this.arrayUser.filter((user: any) => user.idusuarios!== idusuarios);
     });
   }
 }

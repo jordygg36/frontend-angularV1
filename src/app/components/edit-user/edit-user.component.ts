@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class EditUserComponent implements OnInit {
   user: any = {}; 
-
+  selectedFile: File | null = null;
+  previewUrl: string | null = null; 
   constructor(
     private usuarioService: UsuarioService,
     private route: ActivatedRoute,
@@ -24,26 +25,63 @@ export class EditUserComponent implements OnInit {
   }
 
   getUserById() {
-    const id_usuario = this.route.snapshot.paramMap.get('id_usuario'); 
-    if (id_usuario) { 
-      this.usuarioService.fetchUserById(id_usuario).subscribe(data => {
-        this.user = data; 
-      }, error => {
-        console.error('Error fetching user:', error); 
+    const idusuarios = this.route.snapshot.paramMap.get('idusuarios'); 
+    if (idusuarios) { 
+      this.usuarioService.fetchUserById(idusuarios).subscribe({
+        next: (data) => {
+        if (data) {
+          this.user = data;
+          if (data.imagen) {
+            this.previewUrl = data.imagen; 
+          }
+        } else {
+          console.error('Usuario no encontrado.');
+        }
+      },
+      error: (error) => {
+        console.error('Error al obtener usuario:', error);
+      }
       });
+    }else {
+      console.error('ID de usuario no proporcionado.');
     }
   }
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
 
-  onUpdate() {
-    const id_usuario = this.user.id_usuario; 
-    if (id_usuario) { 
-      this.usuarioService.updateUser(id_usuario, this.user).subscribe(() => {
-        this.router.navigate(['/usuario']); 
-      }, error => {
-        console.error('Error updating user:', error);
-      });
-    } else {
-      console.error('ID de usuario no disponible para actualización.');
+      // Crear vista previa de la imagen
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.previewUrl = reader.result as string;
+      };
+      reader.readAsDataURL(file);
     }
+  }
+  onUpdate() {
+    if (!this.user || !this.user.idusuarios) {
+      console.error('ID de usuario no disponible para actualización.');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('nombre', this.user.nombre);
+    formData.append('apellido', this.user.apellido);
+    formData.append('direccion', this.user.direccion);
+    formData.append('email', this.user.email);
+    formData.append('password', this.user.password);
+    
+    if (this.selectedFile) {
+      formData.append('imagen', this.selectedFile);
+    }
+
+    this.usuarioService.updateUser(this.user.idusuarios, formData).subscribe({
+      next: () => {
+        this.router.navigate(['/usuario']);
+      },
+      error: (error) => {
+        console.error('Error al actualizar usuario:', error);
+      }
+    });
   }
 }

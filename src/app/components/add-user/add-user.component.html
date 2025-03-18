@@ -1,11 +1,15 @@
-
 <form (ngSubmit)="addUser()">
     <h2>Agregar Usuario</h2>
-  <input type="text" [(ngModel)]="newUser.id_usuario" name="id_usuario" placeholder="ID" required />
+  
   <input type="text" [(ngModel)]="newUser.nombre" name="nombre" placeholder="Nombre" required>
   <input type="text" [(ngModel)]="newUser.apellido" name="apellido" placeholder="Apellido" required>
-  <input type="text" [(ngModel)]="newUser.direccion" name="direccion" placeholder="Dirección" required>
+  <input type="text" [(ngModel)]="newUser.rfc" name="rfc" placeholder="RFC" required>
   <input type="email" [(ngModel)]="newUser.email" name="email" placeholder="Email" required>
-  <input type="password" [(ngModel)]="newUser.contrasena" name="contrasena" placeholder="Contraseña" required>
+  <input type="text" [(ngModel)]="newUser.direccion" name="direccion" placeholder="Dirección" required>
+  <input type="text" [(ngModel)]="newUser.idrol" name="idrol" placeholder="ID ROL" required>
+  <input type="date" [(ngModel)]="newUser.fecha_creacion" name="fecha_creacion" placeholder="Fecha" required>
+  <input type="password" [(ngModel)]="newUser.password" name="password" placeholder="Contraseña" required>
+  <input type="file" (change)="onFileSelected($event)" name="imagen" accept="image/*">
   <button type="submit">Agregar Usuario</button>
+
 </form>

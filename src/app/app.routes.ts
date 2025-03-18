@@ -1,20 +1,26 @@
 import { Routes } from '@angular/router';
+import { LoginComponent } from './components/login/login.component';
 import { UsersComponent } from './components/users/users.component';
-import { ContenidoComponent } from './components/contenido/contenido.component';
-import { InicioComponent } from './components/inicio/inicio.component';
+import { ProductosListaComponent } from './components/productos-lista/productos-lista.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
-import { AddOrganismoComponent } from './components/add-organismo/add-organismo.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
-import { EditOrganismoComponent } from './components/edit-organismo/edit-organismo.component';
-import {OrganismoComponent} from './components/organismo/organismo.component'
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { CarritoComprasComponent } from './components/carrito-compras/carrito-compras.component';
+import { CarritoModeradorComponent } from './components/carrito-moderador/carrito-moderador.component';
+
+import { AuthGuard } from './services/auth.guard'; 
 export const routes: Routes = [
-  { path: 'usuario', component: UsersComponent },
-  { path: 'inicio', component: InicioComponent },
-  { path: 'editar-usuario/:id_usuario', component: EditUserComponent },
-  { path: 'editar-organismo/:id_organismo', component: EditOrganismoComponent },
-  { path: 'contenido', component: ContenidoComponent },
-  { path: 'organismo', component: OrganismoComponent},
-  { path: 'agregar-usuario', component: AddUserComponent },
-  { path: 'agregar-organismo', component: AddOrganismoComponent },
-  { path: 'regresar', component: UsersComponent },
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },  
+  { path: 'usuario', component: UsersComponent, canActivate: [AuthGuard], data: { role: 1 }},  
+  { path: 'productos', component: ProductosListaComponent},  
+  { path: 'add-user', component: AddUserComponent, canActivate: [AuthGuard], data: { role: 1 }},  
+  { path: 'edit-user/:idusuarios', component: EditUserComponent,  canActivate: [AuthGuard]},
+  { path: 'perfil/:idusuarios', component: PerfilComponent, canActivate: [AuthGuard]},
+  { path: 'carrito-compras', component: CarritoComprasComponent, canActivate: [AuthGuard], data: { role: 3} }, 
+  { path: 'carrito-moderador', component: CarritoModeradorComponent, canActivate: [AuthGuard], data: { role: 2} },  
+
+  { path: 'dashboard', component: DashboardComponent },  
+  { path: '**', redirectTo: 'login' },  
 ];

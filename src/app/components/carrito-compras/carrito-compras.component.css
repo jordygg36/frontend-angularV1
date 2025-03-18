@@ -1,0 +1,112 @@
+/* Estilo general para el cuerpo de la página */
+body {
+    font-family: 'Poppins', sans-serif; /* Aplicar la fuente Poppins */
+    margin: 0;
+    padding: 0;
+    background-color: #f5f9ff; /* Azul muy claro */
+}
+
+/* Estilo general para el contenedor de productos */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+    justify-items: center;
+}
+
+/* Estilos para cada card */
+.product-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* Efecto al pasar el ratón sobre el card */
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Imagen del producto */
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Nombre y precio */
+.product-card .product-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #333;
+    margin-top: 15px;
+}
+
+.product-card .product-price {
+    font-size: 1.2rem;
+    color: #FF6F61; /* Coral */
+    font-weight: 500;
+    margin: 10px 0;
+}
+
+/* Descripción del producto */
+.product-card .product-description {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* Botón de compra */
+.buy-button {
+    padding: 12px 20px;
+    background-color: #FF6F61; /* Coral */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.buy-button:hover {
+    background-color: #e55d4f; /* Coral más oscuro al pasar el ratón */
+}
+
+.buy-button:disabled {
+    background-color: #f1c0b2; /* Coral claro al estar deshabilitado */
+    cursor: not-allowed;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card .product-name {
+        font-size: 1.1rem;
+    }
+
+    .product-card .product-price {
+        font-size: 1rem;
+    }
+
+    .buy-button {
+        font-size: 1rem;
+    }
+}

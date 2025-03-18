@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cart-container">
+        <h2>Lista de Ventas</h2>
+        <ul class="cart-list">
+            <li *ngFor="let item of arrayCarritos" class="cart-item">
+                <img class="cart-image" [src]="item.imagen" alt="Imagen del carrito">
+                <div class="cart-details">
+                    <span class="cart-name">{{ item.producto }}</span>
+                    <span class="cart-price">{{ item.precio | currency }}</span>
+                </div>
+                <button class="remove-button" (click)="deleteCarrito(item.idcarrito)">
+                    Eliminar
+                </button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
