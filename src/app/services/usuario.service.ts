@@ -38,7 +38,7 @@ export class UsuarioService {
     return this.http.get<any>(`${this.URL}/${idusuarios}`, { headers: this.getAuthHeaders() }).pipe(
       map(user => {
         if (user.imagen) {
-          user.imagen = `http://localhost:5000/uploads/${user.imagen}`; 
+          user.imagen = `https://backend-nodejsv1-1.onrender.com/uploads/${user.imagen}`; 
         }
         return user;
       })
