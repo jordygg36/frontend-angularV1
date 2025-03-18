@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductosService {
-  URL = 'http://localhost:5000/api/productos';
-  URL2 = 'http://localhost:5000/api/carrito';  
+  URL = 'https://backend-nodejsv1-1.onrender.com/api/productos';
+  URL2 = 'https://backend-nodejsv1-1.onrender.com/api/carrito';  
 
   constructor(private http: HttpClient) {}
 
